@@ -26,18 +26,43 @@ const fs = require('fs');
         )
     );
 
-    console.log(entries);
+    //console.log(entries);
+    getTickets(entries);
+
+    function getTickets(data) {
+        console.log(data);
+
+        /*  const screeningData = Array.from(
+            data.map(data => ({
+                title: data.title,
+                time: data.time,
+                location: data.location,
+                omu: data.omu,
+                tickets: switch(data.location){
+                    case data.location = "Akademiesalon":
+                    return 20;
+                    break;
+                }
+
+            }))
+        );
+        console.log(screeningData);
+        return screeningData;
+        */
+    }
 
     //TODO: Scrape all sites of the program section and extract the exact time and picture.
     // combine this with the affore scraped data
 
     // Write the scraped data to a json file
-    fs.writeFile('./data.json', JSON.stringify(entries), 'utf8', function(err) {
+    /* fs.writeFile('./data2.json', JSON.stringify(entries), 'utf8', function(
+        err
+    ) {
         if (err) {
             return console.log(err);
         }
         console.log('The file was saved!');
     });
-
+*/
     await browser.close();
 })();
