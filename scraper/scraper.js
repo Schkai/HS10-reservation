@@ -8,6 +8,7 @@ const fs = require('fs');
     const url = 'http://www.heimspiel-filmfest.de/programm/';
     await page.goto(url);
 
+    // TODO: Automatisch einen Key für React erstellen. Am besten direkt im Mapping
     // Scrapes the programm page for all entries and saves their time, location, title and omu
     const entries = await page.evaluate(() =>
         Array.from(document.querySelectorAll('tr.timetable-item')).map(
