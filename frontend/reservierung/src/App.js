@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import fire from './fire';
-
+import { Router, Link } from '@reach/router';
 import User from './User';
 import Landing from './components/landingpage/Landing';
 import Movielist from './components/Movies/Movielist';
@@ -28,14 +27,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <BrowserRouter>
-          <Switch>
-            <Movielist exact path="/" />
-            <Privacy exact path="/privacy" />
-            <Imprint exact path="/imprint" />
-            <MovieDetails path="/film/:id" />
-          </Switch>
-        </BrowserRouter>
+        <header>
+          <Link to="/">Heimspiel 10 Reservierung</Link>
+        </header>
+        <Router>
+          <Movielist path="/" />
+          <Privacy exact path="/privacy" />
+          <Imprint exact path="/imprint" />
+          <MovieDetails path="/film/:id" />
+        </Router>
       </div>
     );
   }
