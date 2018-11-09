@@ -5,7 +5,13 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     console.log(this.props);
-    this.state = { reservierungen: 50, loading: true };
+    this.state = {
+      date: '',
+      image: '',
+      name: '',
+      reservierungen: '',
+      loading: true,
+    };
   }
 
   componentWillMount() {
@@ -21,6 +27,9 @@ class MovieDetails extends Component {
           console.log('Document data:', doc.data());
           console.log(doc.data().reservierungen);
           this.setState({
+            date: doc.data().date,
+            image: doc.data().image,
+            name: doc.data().name,
             reservierungen: doc.data().reservierungen,
             loading: false,
           });
@@ -36,10 +45,22 @@ class MovieDetails extends Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return <p>Loading...</p>;
+    const { date, image, name, reservierungen, loading } = this.state;
+
+    if (loading) {
+      return (
+        <div className="container">
+          <p>Loading...</p>
+        </div>
+      );
+    } else {
+      return (
+        <div className="container">
+          {name}
+          <p>Zweite Zeile</p>
+        </div>
+      );
     }
-    return <p>{this.props.id}</p>;
   }
 }
 

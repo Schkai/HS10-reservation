@@ -25,7 +25,9 @@ class Movie extends Component {
               <p>{this.props.date}</p>
             </div>
             <div className="card-action">
-              <Link to={`/film/${this.props.id}`}>Mehr Informationen</Link>
+              <Link to={`/film/${this.props.id}`}>
+                Mehr Informationen und Reservieren
+              </Link>
             </div>
           </div>
         </div>
