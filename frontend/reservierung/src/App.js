@@ -1,29 +1,20 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import fire from './fire';
+
 import User from './User';
 import Landing from './components/landingpage/Landing';
 import Movielist from './components/Movies/Movielist';
+import Imprint from './components/subsites/Imprint';
+import Privacy from './components/subsites/Privacy';
+import MovieDetails from './components/Movies/MovieDetails';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { messages: [] }; // setup state
+    this.state = { movies: [] }; // setup state
   }
 
-  componentWillMount() {
-    /* Create reference to messages in Firebase Database */
-    let messagesRef = fire
-      .database()
-      .ref('messages')
-      .orderByKey()
-      .limitToLast(100);
-    messagesRef.on('child_added', snapshot => {
-      /* Update React state when message is added at Firebase Database */
-      let message = { text: snapshot.val(), id: snapshot.key };
-      this.setState({ messages: [message].concat(this.state.messages) });
-    });
-  }
   addMessage(e) {
     e.preventDefault(); // <- prevent form submit from reloading the page
     /* Send the message to Firebase */
@@ -39,7 +30,10 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Switch>
-            <Route path="/" component={Movielist} />
+            <Movielist exact path="/" />
+            <Privacy exact path="/privacy" />
+            <Imprint exact path="/imprint" />
+            <MovieDetails path="/film/:id" />
           </Switch>
         </BrowserRouter>
       </div>
