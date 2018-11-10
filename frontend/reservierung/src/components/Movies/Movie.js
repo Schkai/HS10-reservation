@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
+import './Movie.css';
 
 class Movie extends Component {
   constructor(props) {
@@ -14,19 +15,23 @@ class Movie extends Component {
         <p>{this.props.date}</p>
         <p>{this.props.image}</p> */
       //<Link to={`/film/${this.props.id}`} className="movie" props={this.props}>
-      <div className="row">
-        <div className="col s12 m7">
-          <div className="card">
+      <div className="center-align">
+        <div className="col m4">
+          <div className="card hoverable">
             <div className="card-image">
               <img src={this.props.image} />
-              <span className="card-title">{this.props.title}</span>
+              <span className="card-title center-align">
+                {this.props.title}
+              </span>
             </div>
             <div className="card-content">
+              <p>{this.props.teaser}</p>
+              <br />
               <p>{this.props.date}</p>
             </div>
-            <div className="card-action">
+            <div className="card-action ">
               <Link to={`/film/${this.props.id}`}>
-                Mehr Informationen und Reservieren
+                <span className="text-red text-darken-4">Reservieren</span>
               </Link>
             </div>
           </div>

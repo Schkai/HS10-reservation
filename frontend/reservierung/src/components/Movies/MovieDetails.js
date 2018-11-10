@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import fire from './../../fire';
-import { Link } from '@reach/router';
+import { navigate } from '@reach/router';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -10,8 +12,8 @@ class MovieDetails extends Component {
       date: '',
       image: '',
       name: '',
-      reservierungen: '',
-      maxReservierungen: '',
+      reservierungen: 0,
+      maxReservierungen: 0,
       loading: true,
       reservationName: '',
       phone: '',
@@ -20,7 +22,22 @@ class MovieDetails extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.notify = this.notify.bind(this);
   }
+
+  notify = () =>
+    toast.success(
+      'Vielen Dank, Ihr Ticket wurde reserviert. Sie werden zurück auf die Startseite weitergeleitet.',
+      {
+        position: 'bottom-left',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        onClose: () => navigate('/'),
+      }
+    );
 
   componentWillMount() {
     let db = fire.firestore();
@@ -32,8 +49,7 @@ class MovieDetails extends Component {
       .get()
       .then(doc => {
         if (doc.exists) {
-          console.log('Document data:', doc.data());
-          console.log(doc.data().reservierungen);
+          console.log('Document data loaded:', doc.data());
           this.setState({
             date: doc.data().date,
             image: doc.data().img,
@@ -42,7 +58,6 @@ class MovieDetails extends Component {
             maxReservierungen: doc.data().maxReservierungen,
             loading: false,
           });
-          console.log(this.state);
         } else {
           // doc.data() will be undefined in this case
           console.log('No such document!');
@@ -59,7 +74,8 @@ class MovieDetails extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
+    this.setState({ reservierungen: this.state.reservierungen + 1 });
+    this.increaseTicketCounter(this.props.id, this.state.reservierungen);
     this.addReserveration(
       this.state.reservationName,
       this.state.phone,
@@ -67,9 +83,33 @@ class MovieDetails extends Component {
     );
   }
 
-  addReserveration(reservationName, phone, id) {
-    console.log(reservationName, phone, id);
+  increaseTicketCounter(id, tickets) {
+    console.log(this.state);
+    console.log(tickets);
 
+    let db = fire.firestore();
+    db.settings({ timestampsInSnapshots: true });
+
+    let ticketCounterRef = db.collection('filme').doc(id);
+    ticketCounterRef
+      .set(
+        {
+          reservierungen: tickets + 1,
+        },
+        {
+          merge: true,
+        }
+      )
+      .then(function() {
+        console.log('Document successfully updated!');
+      })
+      .catch(function(error) {
+        // The document probably doesn't exist.
+        console.error('Error updating document: ', error);
+      });
+  }
+
+  addReserveration(reservationName, phone, id) {
     let db = fire.firestore();
     db.settings({ timestampsInSnapshots: true });
 
@@ -77,7 +117,6 @@ class MovieDetails extends Component {
       .collection('filme')
       .doc(id)
       .collection('reservierungen');
-
     reservationRef
       .add({
         name: reservationName,
@@ -106,7 +145,7 @@ class MovieDetails extends Component {
 
     let form;
 
-    if (reservierungen < maxReservierungen) {
+    if (reservierungen < maxReservierungen && !reservated) {
       form = (
         <div>
           <form onSubmit={this.handleSubmit}>
@@ -130,25 +169,13 @@ class MovieDetails extends Component {
                 className="validate"
               />
             </label>
-            <label>
-              <input
-                type="checkbox"
-                name="privacy"
-                checked={this.state.privacy}
-                onChange={this.handleChange}
-                className="validate"
-              />
-              <span>
-                <Link to="/privacy" target="_blank" rel="noopener noreferrer">
-                  Datenschutzbestimmung gelesen und akzeptiert.
-                </Link>
-              </span>
-            </label>
+
             <br />
             <button
               className="btn waves-effect waves-light"
               type="submit"
               onSubmit={this.handleSubmit}
+              onClick={this.notify}
             >
               Reservieren
             </button>
@@ -156,7 +183,7 @@ class MovieDetails extends Component {
         </div>
       );
     } else if (reservierungen < maxReservierungen && reservated) {
-      form = <p>Unser Reservierungs-Kontingent ist leider aufgebraucht.</p>;
+      form = <p>Ihre Registrierung wurde erfolgreich gespeichert!</p>;
     } else {
       form = <p>Unser Reservierungs-Kontingent ist leider aufgebraucht.</p>;
     }
@@ -172,11 +199,13 @@ class MovieDetails extends Component {
         <div className="container">
           <p>{name}</p>
           <p>{date}</p>
-          <p> Verbleibende Tickets: {reservierungen}</p>
+          <p> Resevierte Tickets: {reservierungen}</p>
           <p>Bild:</p>
           <img src={image} />
           <br />
+          <br />
            {form}
+          <ToastContainer />
         </div>
       );
     }
@@ -184,3 +213,22 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
+
+/*
+
+            <label>
+              <input
+                type="checkbox"
+                name="privacy"
+                checked={this.state.privacy}
+                onChange={this.handleChange}
+                className="validate"
+              />
+              <span>
+                <Link to="/privacy" target="_blank" rel="noopener noreferrer">
+                  Datenschutzbestimmung
+                </Link>
+                &nbsp;gelesen und akzeptiert.
+              </span>
+            </label>
+            */

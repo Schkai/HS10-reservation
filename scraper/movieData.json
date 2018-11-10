@@ -4,461 +4,461 @@
         "location": "Kino Ostentor",
         "title": "JUSQU’À LA GARDE",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 110
     },
     {
         "time": "16.30",
         "location": "Akademiesalon",
         "title": "GET OUT",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 30
     },
     {
         "time": "17.00",
         "location": "Kino Ostentor",
         "title": "AU POSTE!",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 110
     },
     {
         "time": "18.00",
         "location": "Wintergarten",
         "title": "IN DEN GÄNGEN",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 55
     },
     {
         "time": "19.00",
         "location": "FilmGalerie",
         "title": "SARAH JOUE UN LOUP-GAROU",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 55
     },
     {
         "time": "19.30",
         "location": "Kino Ostentor",
         "title": "HEREDITARY – DAS VERMÄCHTNIS",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 110
     },
     {
         "time": "20.00",
         "location": "Akademiesalon",
         "title": "THE BROKEN CIRCLE BREAKDOWN",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.30",
         "location": "Wintergarten",
         "title": "MURER – ANATOMIE EINES PROZESSES",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "21.30",
         "location": "FilmGalerie",
         "title": "LES GARÇONS SAUVAGES",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "22.00",
         "location": "Kino Ostentor",
         "title": "SUSPIRIA",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "16.30",
         "location": "Akademiesalon",
         "title": "INTERNATIONALES KURZFILM-PROGRAMM",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "17.00",
         "location": "Kino Ostentor",
         "title": "CAN YOU EVER FORGIVE ME?",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "18.00",
         "location": "Wintergarten",
         "title": "RESURRECTION",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.00",
         "location": "FilmGalerie",
         "title": "COLD WAR",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.30",
         "location": "Kino Ostentor",
         "title": "WINTERMÄRCHEN",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.00",
         "location": "Akademiesalon",
         "title": "REWIND: DIE ZWEITE CHANCE",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.30",
         "location": "Wintergarten",
         "title": "ALLES IST GUT",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "21.30",
         "location": "FilmGalerie",
         "title": "VISION",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "22.00",
         "location": "Kino Ostentor",
         "title": "PIERCING",
         "omu": "OV",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "14.30",
         "location": "Kino Ostentor",
         "title": "KINOLOUNGE: IRIS BERBEN",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "16.30",
         "location": "Akademiesalon",
         "title": "ÜBER UNS DAS ALL",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "17.00",
         "location": "Kino Ostentor",
         "title": "HANNE",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "18.00",
         "location": "Wintergarten",
         "title": "WINDSPIEL",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.00",
         "location": "FilmGalerie",
         "title": "LA VILLA",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.30",
         "location": "Kino Ostentor",
         "title": "BEAST",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.00",
         "location": "Akademiesalon",
         "title": "AN ELEPHANT SITTING STILL",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.30",
         "location": "Wintergarten",
         "title": "A YOUNG MAN WITH HIGH POTENTIAL",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "21.30",
         "location": "FilmGalerie",
         "title": "L´APPARITION – DIE ERSCHEINUNG",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "22.00",
         "location": "Kino Ostentor",
         "title": "UNDER THE SILVER LAKE",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "14.30",
         "location": "Kino Ostentor",
         "title": "KINOLOUNGE: MATTHIAS BRANDT",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "16.30",
         "location": "Akademiesalon",
         "title": "I ORIGINS",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "17.00",
         "location": "FilmGalerie",
         "title": "POLIZEIRUF 110: TATORTE",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "17.00",
         "location": "Kino Ostentor",
         "title": "AU POSTE!",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "18.00",
         "location": "Wintergarten",
         "title": "STYX",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.00",
         "location": "FilmGalerie",
         "title": "TRANSIT",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.30",
         "location": "Kino Ostentor",
         "title": "KONZERT: AND THE GOLDEN CHOIR",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.00",
         "location": "Akademiesalon",
         "title": "303",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.30",
         "location": "Wintergarten",
         "title": "ZAUBERER",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "21.30",
         "location": "FilmGalerie",
         "title": "GEGENÜBER",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "16.30",
         "location": "Akademiesalon",
         "title": "THE LOBSTER",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "17.00",
         "location": "Kino Ostentor",
         "title": "BEAST",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "18.00",
         "location": "Wintergarten",
         "title": "BLUE MY MIND",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.00",
         "location": "FilmGalerie",
         "title": "SLEEP HAS HER HOUSE",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.30",
         "location": "Kino Ostentor",
         "title": "WILDLIFE",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.00",
         "location": "Akademiesalon",
         "title": "WELTSTADT",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.30",
         "location": "Wintergarten",
         "title": "THUNDER ROAD",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "21.30",
         "location": "FilmGalerie",
         "title": "BIRDS OF PASSAGE",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "22.00",
         "location": "Kino Ostentor",
         "title": "PIERCING",
         "omu": "OV",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "16.30",
         "location": "Akademiesalon",
         "title": "OH BOY",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "17.00",
         "location": "Kino Ostentor",
         "title": "UNDER THE SILVER LAKE",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "18.00",
         "location": "Wintergarten",
         "title": "IDIOTEN DER FAMILIE",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.00",
         "location": "FilmGalerie",
         "title": "GUTLAND",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.30",
         "location": "Kino Ostentor",
         "title": "ÜBERRASCHUNGSFILM",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.00",
         "location": "Akademiesalon",
         "title": "A GIRL WALKS HOME ALONE AT NIGHT",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.30",
         "location": "Wintergarten",
         "title": "LUZ",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "21.30",
         "location": "FilmGalerie",
         "title": "LES CONFINS DU MONDE",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "22.00",
         "location": "Kino Ostentor",
         "title": "CLIMAX",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "16.30",
         "location": "Akademiesalon",
         "title": "PORTRAITS DEUTSCHER ALKOHOLIKER",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "17.00",
         "location": "Kino Ostentor",
         "title": "LEAVE NO TRACE",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "18.00",
         "location": "Wintergarten",
         "title": "SUNSET",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.00",
         "location": "FilmGalerie",
         "title": "BIRDS OF PASSAGE",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "19.30",
         "location": "Kino Ostentor",
         "title": "GALVESTON",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.00",
         "location": "Akademiesalon",
         "title": "GEWINNER PUBLIKUMSPREIS",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "20.30",
         "location": "Wintergarten",
         "title": "LE FIDÈLE",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "21.30",
         "location": "FilmGalerie",
         "title": "SCARY MOTHER",
         "omu": "OmU",
-        "tickets": 20
+        "maxReservierungen": 20
     },
     {
         "time": "22.00",
         "location": "Kino Ostentor",
         "title": "IN FABRIC",
         "omu": "",
-        "tickets": 20
+        "maxReservierungen": 20
     }
 ]

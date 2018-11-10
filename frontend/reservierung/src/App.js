@@ -7,6 +7,7 @@ import Movielist from './components/Movies/Movielist';
 import Imprint from './components/subsites/Imprint';
 import Privacy from './components/subsites/Privacy';
 import MovieDetails from './components/Movies/MovieDetails';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -28,9 +29,26 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <header>
-            <Link to="/">Heimspiel 10 Reservierung</Link>
-          </header>
+          <nav className="transparent">
+            <div className="nav-wrapper transparent">
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+              </a>
+
+              <a href="/" class="brand-logo">
+                Tickets
+              </a>
+
+              <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <li>
+                  <a href="/privacy">Datenschutz</a>
+                </li>
+                <li>
+                  <a href="/imprint">Impressum</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
         </div>
         <Router>
           <Movielist path="/" />

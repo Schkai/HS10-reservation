@@ -50,6 +50,7 @@ class Movielist extends Component {
                 image={movie.movie.img}
                 id={movie.id}
                 key={movie.id}
+                teaser={movie.movie.teaser}
               />
             );
           })}
