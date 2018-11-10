@@ -14,6 +14,7 @@ class MovieDetails extends Component {
       loading: true,
       mail: '',
       phone: '',
+      privacy: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -51,13 +52,13 @@ class MovieDetails extends Component {
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    console.log('hi');
+    console.log(event.target);
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(event) {
-    this.setState({ value: event.target.value });
-
-    alert('A name was submitted: ' + this.state.value);
+    alert('A name was submitted: ' + this.state.phone + ' ' + this.state.mail);
     console.log(this.state);
     event.preventDefault();
   }
@@ -76,17 +77,49 @@ class MovieDetails extends Component {
 
     if (reservierungen < maxReservierungen) {
       form = (
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input
-              type="text"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-          </label>
-          <input disbled type="submit" value="Reservieren" />
-        </form>
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Name:
+              <input
+                type="text"
+                name="mail"
+                value={this.state.mail}
+                onChange={this.handleChange}
+                className="validate"
+              />
+            </label>
+            <label>
+              Telefonnummer:
+              <input
+                type="number"
+                name="phone"
+                value={this.state.phone}
+                onChange={this.handleChange}
+                className="validate"
+              />
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="privacy"
+                checked={this.state.privacy}
+                onChange={this.handleChange}
+                className="validate"
+              />
+              <span>Datenschutzbestimmung gelesen und akzeptiert.</span>
+            </label>
+          </form>
+          <br />
+          <button
+            class="btn waves-effect waves-light"
+            type="submit"
+            name="action"
+          >
+            Submit
+            <i class="material-icons right" />
+          </button>
+        </div>
       );
     } else {
       form = <p>Es sind leider keine Online-Reservierungen mehr möglich</p>;
