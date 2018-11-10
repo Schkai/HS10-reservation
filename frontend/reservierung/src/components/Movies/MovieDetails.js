@@ -13,19 +13,20 @@ class MovieDetails extends Component {
       reservierungen: '',
       maxReservierungen: '',
       loading: true,
-      mail: '',
+      reservationName: '',
       phone: '',
       privacy: false,
+      reservated: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
-    var db = fire.firestore();
+    let db = fire.firestore();
     db.settings({ timestampsInSnapshots: true });
 
-    var detailRef = db.collection('filme').doc(this.props.id);
+    let detailRef = db.collection('filme').doc(this.props.id);
 
     detailRef
       .get()
@@ -53,15 +54,43 @@ class MovieDetails extends Component {
   }
 
   handleChange(event) {
-    console.log('hi');
-    console.log(event.target);
     this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.phone + ' ' + this.state.mail);
-    console.log(this.state);
     event.preventDefault();
+
+    this.addReserveration(
+      this.state.reservationName,
+      this.state.phone,
+      this.props.id
+    );
+  }
+
+  addReserveration(reservationName, phone, id) {
+    console.log(reservationName, phone, id);
+
+    let db = fire.firestore();
+    db.settings({ timestampsInSnapshots: true });
+
+    let reservationRef = db
+      .collection('filme')
+      .doc(id)
+      .collection('reservierungen');
+
+    reservationRef
+      .add({
+        name: reservationName,
+        phone: phone,
+      })
+      .then(function(docRef) {
+        console.log('Document written with ID: ', docRef.id);
+      })
+      .catch(function(error) {
+        console.error('Error adding document: ', error);
+      });
+
+    this.setState({ phone: '', reservationName: '', reservated: true });
   }
 
   render() {
@@ -72,6 +101,7 @@ class MovieDetails extends Component {
       reservierungen,
       loading,
       maxReservierungen,
+      reservated,
     } = this.state;
 
     let form;
@@ -84,8 +114,8 @@ class MovieDetails extends Component {
               Name:
               <input
                 type="text"
-                name="mail"
-                value={this.state.mail}
+                name="reservationName"
+                value={this.state.reservationName}
                 onChange={this.handleChange}
                 className="validate"
               />
@@ -110,23 +140,23 @@ class MovieDetails extends Component {
               />
               <span>
                 <Link to="/privacy" target="_blank" rel="noopener noreferrer">
-                  Datenschutzbestimmung
+                  Datenschutzbestimmung gelesen und akzeptiert.
                 </Link>
-                gelesen und akzeptiert.
               </span>
             </label>
+            <br />
+            <button
+              className="btn waves-effect waves-light"
+              type="submit"
+              onSubmit={this.handleSubmit}
+            >
+              Reservieren
+            </button>
           </form>
-          <br />
-          <button
-            class="btn waves-effect waves-light"
-            type="submit"
-            name="action"
-          >
-            Submit
-            <i class="material-icons right" />
-          </button>
         </div>
       );
+    } else if (reservierungen < maxReservierungen && reservated) {
+      form = <p>Unser Reservierungs-Kontingent ist leider aufgebraucht.</p>;
     } else {
       form = <p>Unser Reservierungs-Kontingent ist leider aufgebraucht.</p>;
     }
@@ -145,7 +175,7 @@ class MovieDetails extends Component {
           <p> Verbleibende Tickets: {reservierungen}</p>
           <p>Bild:</p>
           <img src={image} />
-          <p>Break</p>
+          <br />
            {form}
         </div>
       );
