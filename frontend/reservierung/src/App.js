@@ -27,9 +27,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <Link to="/">Heimspiel 10 Reservierung</Link>
-        </header>
+        <div className="container">
+          <header>
+            <Link to="/">Heimspiel 10 Reservierung</Link>
+          </header>
+        </div>
         <Router>
           <Movielist path="/" />
           <Privacy exact path="/privacy" />

@@ -10,8 +10,13 @@ class MovieDetails extends Component {
       image: '',
       name: '',
       reservierungen: '',
+      maxReservierungen: '',
       loading: true,
+      mail: '',
+      phone: '',
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -28,9 +33,10 @@ class MovieDetails extends Component {
           console.log(doc.data().reservierungen);
           this.setState({
             date: doc.data().date,
-            image: doc.data().image,
+            image: doc.data().img,
             name: doc.data().name,
             reservierungen: doc.data().reservierungen,
+            maxReservierungen: doc.data().maxReservierungen,
             loading: false,
           });
           console.log(this.state);
@@ -44,8 +50,47 @@ class MovieDetails extends Component {
       });
   }
 
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    this.setState({ value: event.target.value });
+
+    alert('A name was submitted: ' + this.state.value);
+    console.log(this.state);
+    event.preventDefault();
+  }
+
   render() {
-    const { date, image, name, reservierungen, loading } = this.state;
+    const {
+      date,
+      image,
+      name,
+      reservierungen,
+      loading,
+      maxReservierungen,
+    } = this.state;
+
+    let form;
+
+    if (reservierungen < maxReservierungen) {
+      form = (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input
+              type="text"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </label>
+          <input disbled type="submit" value="Reservieren" />
+        </form>
+      );
+    } else {
+      form = <p>Es sind leider keine Online-Reservierungen mehr möglich</p>;
+    }
 
     if (loading) {
       return (
@@ -56,8 +101,13 @@ class MovieDetails extends Component {
     } else {
       return (
         <div className="container">
-          {name}
-          <p>Zweite Zeile</p>
+          <p>{name}</p>
+          <p>{date}</p>
+          <p> Verbleibende Tickets: {reservierungen}</p>
+          <p>Bild:</p>
+          <img src={image} />
+          <p>Break</p>
+           {form}
         </div>
       );
     }
