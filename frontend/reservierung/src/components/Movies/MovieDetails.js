@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import fire from './../../fire';
+import { Link } from '@reach/router';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -107,7 +108,12 @@ class MovieDetails extends Component {
                 onChange={this.handleChange}
                 className="validate"
               />
-              <span>Datenschutzbestimmung gelesen und akzeptiert.</span>
+              <span>
+                <Link to="/privacy" target="_blank" rel="noopener noreferrer">
+                  Datenschutzbestimmung
+                </Link>
+                gelesen und akzeptiert.
+              </span>
             </label>
           </form>
           <br />
@@ -122,7 +128,7 @@ class MovieDetails extends Component {
         </div>
       );
     } else {
-      form = <p>Es sind leider keine Online-Reservierungen mehr möglich</p>;
+      form = <p>Unser Reservierungs-Kontingent ist leider aufgebraucht.</p>;
     }
 
     if (loading) {
