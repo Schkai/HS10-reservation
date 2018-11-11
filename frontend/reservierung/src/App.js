@@ -31,11 +31,7 @@ class App extends Component {
         <div className="container">
           <nav className="transparent">
             <div className="nav-wrapper transparent">
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-                <i class="material-icons">menu</i>
-              </a>
-
-              <a href="/" class="brand-logo">
+              <a href="/" class="brand-logo center">
                 Tickets
               </a>
             </div>

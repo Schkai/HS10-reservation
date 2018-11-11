@@ -14,10 +14,9 @@ import {
   ProgressBar,
   Input,
   Row,
+  Button,
+  Modal,
 } from 'react-materialize';
-import $ from 'jquery';
-import YouTube from 'react-youtube';
-var getYouTubeID = require('get-youtube-id');
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -80,7 +79,7 @@ class MovieDetails extends Component {
             loading: false,
             teaser: doc.data().teaser,
             regie: doc.data().regie,
-            trailer: getYouTubeID(doc.data().trailer),
+            trailer: doc.data().trailer,
             desc: doc.data().desc,
             laufzeit: doc.data().laufzeit,
           });
@@ -181,22 +180,29 @@ class MovieDetails extends Component {
         <div>
           <form onSubmit={this.handleSubmit}>
             <Row>
-              <Input placeholder="Ihr Name" s={6} label="Name" />
               <Input
+                placeholder="Ihr Name"
                 s={6}
-                placeholder="Ihre Telefonnummer"
-                label="Telefonnummer"
+                label="Name:"
+                onChange={this.handleChange}
+                type="text"
               />
               <Input
-                s={12}
-                type="select"
-                label="Materialize Select"
-                defaultValue="2"
-              >
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-              </Input>
+                s={6}
+                placeholder="Ihre Telefonnummer:"
+                label="Telefonnummer"
+                onChange={this.handleChange}
+                type="tel"
+              />
+              <Input
+                placeholder="1"
+                s={6}
+                label="Anzahl der Tickets (maximal 8):"
+                onChange={this.handleChange}
+                type="number"
+                min="1"
+                max="8"
+              />
             </Row>
 
             <br />
@@ -228,40 +234,55 @@ class MovieDetails extends Component {
     } else {
       return (
         <div className="container">
-          <div className="whitespace">
-            <Col m={7} s={12}>
-              <Card horizontal header={<CardTitle image={image} />}>
-                <div className="teaser">
-                  <span>{teaser}</span>
-                </div>
-                <h4 className="">{name}</h4>
-                <hr />
-                <h6>{date}</h6>
-                <h6>Laufzeit: {laufzeit}</h6>
-              </Card>
-              <Tabs className="tab-demo z-depth-1">
-                <Tab title="Film" active>
-                  <div className="card-panel white">
-                    <p>{desc}</p>
-                  </div>
-                </Tab>
-                <Tab title="Regie" className="regie">
-                  <div className="card-panel white">
-                    <p>{regie}</p>
-                  </div>
-                </Tab>
-                <Tab title="Trailer">
-                  <div className="card-panel white">
-                    <YouTube videoId={trailer} />
-                  </div>
-                </Tab>
-                <Tab title="Reservieren">
-                  <div className="card-panel white"> {form}</div>
-                </Tab>
-              </Tabs>
-            </Col>
-          </div>
+          <div class="centering">
+            <Card classname="small" header={<CardTitle image={image} />}>
+              <h4 className="">{name}</h4>
+              <hr />
+              <div className="teaser">
+                <span>{teaser}</span>
+              </div>
 
+              <h6>{date}</h6>
+              <h6>Laufzeit: {laufzeit}</h6>
+              <Modal
+                header="Reservieren"
+                trigger={<Button>Reservieren</Button>}
+                actions={
+                  <Button modal="close" waves="light">
+                    Schließen
+                  </Button>
+                }
+              >
+                {form}
+              </Modal>
+            </Card>
+
+            <Tabs className="tab-demo z-depth-1 tabs-fixed-width">
+              <Tab title="Film" active>
+                <div className="card-panel white">
+                  <p>{desc}</p>
+                </div>
+              </Tab>
+              <Tab title="Regie" className="regie">
+                <div className="card-panel white">
+                  <p>{regie}</p>
+                </div>
+              </Tab>
+              <Tab title="Trailer">
+                <div className="card-panel white ">
+                  <div class="video-container">
+                    <iframe
+                      width="853"
+                      height="480"
+                      src={trailer}
+                      frameborder="0"
+                      allowfullscreen
+                    />
+                  </div>
+                </div>
+              </Tab>
+            </Tabs>
+          </div>
           <ToastContainer />
         </div>
       );

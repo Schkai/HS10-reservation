@@ -5,3 +5,12 @@
 .whitespace {
   background-color: inherit;
 }
+
+.youtube {
+  width: auto;
+}
+
+.centering {
+  width: 80%;
+  margin: auto;
+}

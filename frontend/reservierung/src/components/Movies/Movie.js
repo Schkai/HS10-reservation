@@ -17,7 +17,7 @@ class Movie extends Component {
       //<Link to={`/film/${this.props.id}`} className="movie" props={this.props}>
       <div className="center-align">
         <div className="col m4">
-          <div className="card hoverable">
+          <div className="card  hoverable">
             <div className="card-image">
               <img src={this.props.image} />
               <span className="card-title center-align">
