@@ -38,15 +38,6 @@ class App extends Component {
               <a href="/" class="brand-logo">
                 Tickets
               </a>
-
-              <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <li>
-                  <a href="/privacy">Datenschutz</a>
-                </li>
-                <li>
-                  <a href="/imprint">Impressum</a>
-                </li>
-              </ul>
             </div>
           </nav>
         </div>
@@ -80,6 +71,17 @@ class App extends Component {
           </form>
         </div>
       </div>
+
+
+
+              <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <li>
+                  <a href="/privacy">Datenschutz</a>
+                </li>
+                <li>
+                  <a href="/imprint">Impressum</a>
+                </li>
+              </ul>
       */
 
 export default App;

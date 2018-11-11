@@ -3,6 +3,21 @@ import fire from './../../fire';
 import { navigate } from '@reach/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './MovieDetail.css';
+import {
+  Tabs,
+  Tab,
+  Col,
+  Card,
+  CardTitle,
+  Preloader,
+  ProgressBar,
+  Input,
+  Row,
+} from 'react-materialize';
+import $ from 'jquery';
+import YouTube from 'react-youtube';
+var getYouTubeID = require('get-youtube-id');
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -19,6 +34,12 @@ class MovieDetails extends Component {
       phone: '',
       privacy: false,
       reservated: false,
+      teaser: '',
+      regie: '',
+      trailer: '',
+      desc: '',
+      laufzeit: '',
+      ticketanzahl: 1,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,6 +78,11 @@ class MovieDetails extends Component {
             reservierungen: doc.data().reservierungen,
             maxReservierungen: doc.data().maxReservierungen,
             loading: false,
+            teaser: doc.data().teaser,
+            regie: doc.data().regie,
+            trailer: getYouTubeID(doc.data().trailer),
+            desc: doc.data().desc,
+            laufzeit: doc.data().laufzeit,
           });
         } else {
           // doc.data() will be undefined in this case
@@ -141,6 +167,11 @@ class MovieDetails extends Component {
       loading,
       maxReservierungen,
       reservated,
+      teaser,
+      trailer,
+      regie,
+      desc,
+      laufzeit,
     } = this.state;
 
     let form;
@@ -149,26 +180,24 @@ class MovieDetails extends Component {
       form = (
         <div>
           <form onSubmit={this.handleSubmit}>
-            <label>
-              Name:
-              <input
-                type="text"
-                name="reservationName"
-                value={this.state.reservationName}
-                onChange={this.handleChange}
-                className="validate"
+            <Row>
+              <Input placeholder="Ihr Name" s={6} label="Name" />
+              <Input
+                s={6}
+                placeholder="Ihre Telefonnummer"
+                label="Telefonnummer"
               />
-            </label>
-            <label>
-              Telefonnummer:
-              <input
-                type="number"
-                name="phone"
-                value={this.state.phone}
-                onChange={this.handleChange}
-                className="validate"
-              />
-            </label>
+              <Input
+                s={12}
+                type="select"
+                label="Materialize Select"
+                defaultValue="2"
+              >
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </Input>
+            </Row>
 
             <br />
             <button
@@ -191,20 +220,48 @@ class MovieDetails extends Component {
     if (loading) {
       return (
         <div className="container">
-          <p>Loading...</p>
+          <Col s={12}>
+            <ProgressBar />
+          </Col>
         </div>
       );
     } else {
       return (
         <div className="container">
-          <p>{name}</p>
-          <p>{date}</p>
-          <p> Resevierte Tickets: {reservierungen}</p>
-          <p>Bild:</p>
-          <img src={image} />
-          <br />
-          <br />
-           {form}
+          <div className="whitespace">
+            <Col m={7} s={12}>
+              <Card horizontal header={<CardTitle image={image} />}>
+                <div className="teaser">
+                  <span>{teaser}</span>
+                </div>
+                <h4 className="">{name}</h4>
+                <hr />
+                <h6>{date}</h6>
+                <h6>Laufzeit: {laufzeit}</h6>
+              </Card>
+              <Tabs className="tab-demo z-depth-1">
+                <Tab title="Film" active>
+                  <div className="card-panel white">
+                    <p>{desc}</p>
+                  </div>
+                </Tab>
+                <Tab title="Regie" className="regie">
+                  <div className="card-panel white">
+                    <p>{regie}</p>
+                  </div>
+                </Tab>
+                <Tab title="Trailer">
+                  <div className="card-panel white">
+                    <YouTube videoId={trailer} />
+                  </div>
+                </Tab>
+                <Tab title="Reservieren">
+                  <div className="card-panel white"> {form}</div>
+                </Tab>
+              </Tabs>
+            </Col>
+          </div>
+
           <ToastContainer />
         </div>
       );
@@ -231,4 +288,65 @@ export default MovieDetails;
                 &nbsp;gelesen und akzeptiert.
               </span>
             </label>
+
+
+            
+                      <div>
+            <div class="col s12 m7">
+              <div class="card horizontal">
+                <div class="card-image">
+                  <img src={image} />
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <div className="teaser">
+                      <span>{teaser}</span>
+                    </div>
+                    <h4 className="">{name}</h4>
+                    <hr />
+                    <h6>{date}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+            <label>
+              Name:
+              <input
+                type="text"
+                name="reservationName"
+                value={this.state.reservationName}
+                onChange={this.handleChange}
+                className="validate"
+              />
+            </label>
+            <label>
+              Telefonnummer:
+              <input
+                type="number"
+                name="phone"
+                value={this.state.phone}
+                onChange={this.handleChange}
+                className="validate"
+              />
+            </label>
+
+            <label>
+              Anzahl der Tickets (maximal 8):
+              <input
+                type="number"
+                name="ticketanzahl"
+                value={this.state.ticketanzahl}
+                onChange={this.handleChange}
+                className="validate"
+                min="1"
+                max="8"
+              />
+            </label>
+
+
             */
