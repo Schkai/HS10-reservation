@@ -7,6 +7,7 @@ import Movielist from './components/Movies/Movielist';
 import Imprint from './components/subsites/Imprint';
 import Privacy from './components/subsites/Privacy';
 import MovieDetails from './components/Movies/MovieDetails';
+import { Footer } from 'react-materialize';
 import './App.css';
 
 class App extends Component {
@@ -32,7 +33,7 @@ class App extends Component {
           <nav className="transparent">
             <div className="nav-wrapper transparent">
               <a href="/" class="brand-logo center">
-                Tickets
+                Tickets reservieren
               </a>
             </div>
           </nav>
@@ -43,6 +44,16 @@ class App extends Component {
           <Imprint exact path="/imprint" />
           <MovieDetails path="/film/:id" />
         </Router>
+        <Footer
+          moreLinks={
+            <div>
+              <a className="grey-text text-lighten-4 right" href="/imprint">
+                Impressum & Datenschutz
+              </a>
+            </div>
+          }
+          className="footer"
+        />
       </div>
     );
   }

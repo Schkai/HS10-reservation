@@ -5,7 +5,6 @@ import './Movie.css';
 class Movie extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
   }
 
   render() {
@@ -17,7 +16,7 @@ class Movie extends Component {
       //<Link to={`/film/${this.props.id}`} className="movie" props={this.props}>
       <div className="center-align">
         <div className="col m4">
-          <div className="card  hoverable">
+          <div className="card medium hoverable">
             <div className="card-image">
               <img src={this.props.image} />
               <span className="card-title center-align">
@@ -26,8 +25,8 @@ class Movie extends Component {
             </div>
             <div className="card-content">
               <p>{this.props.teaser}</p>
+
               <br />
-              <p>{this.props.date}</p>
             </div>
             <div className="card-action ">
               <Link to={`/film/${this.props.id}`}>

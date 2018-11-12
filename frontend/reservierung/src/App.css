@@ -19,3 +19,11 @@
 .nav-wrapper {
   color: transparent !important;
 }
+
+.footer-copyright {
+  background-color: transparent;
+}
+
+.page-footer {
+  background-color: transparent;
+}

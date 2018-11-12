@@ -4,7 +4,6 @@
   text-align: initial; /* restore text-align to default */
 }
 
-.card {
-  height: auto;
-  overflow: hidden;
+.card-image {
+  max-height: 40% !important;
 }
