@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Movie from './Movie';
 import fire from '../../fire';
+import { Col, ProgressBar } from 'react-materialize';
 
 class Movielist extends Component {
   constructor(props) {
     super(props);
-    this.state = { movies: [] }; // setup state  }
+    this.state = { movies: [], loading: true }; // setup state  }
   }
 
   componentWillMount() {
@@ -24,6 +25,7 @@ class Movielist extends Component {
 
           console.log(this.state.movies);
         });
+        this.setState({ loading: false });
       });
 
     /*     movieRef.on('child_added', snapshot => {
@@ -34,13 +36,19 @@ class Movielist extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   render() {
+    const { loading } = this.state;
     return (
       <div className="movielist container">
         <div className="row">
+          {this.state.loading && (
+            <Col s={12}>
+              <ProgressBar />
+            </Col>
+          )}
           {this.state.movies.map(movie => {
             return (
               <Movie

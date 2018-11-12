@@ -11,3 +11,10 @@
 .card.medium .card-content {
   overflow: auto;
 }
+.card-title {
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}

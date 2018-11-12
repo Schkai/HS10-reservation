@@ -25,6 +25,8 @@ class Movie extends Component {
             </div>
             <div className="card-content">
               <p>{this.props.teaser}</p>
+              <br />
+              <p>{this.props.date}</p>
 
               <br />
             </div>

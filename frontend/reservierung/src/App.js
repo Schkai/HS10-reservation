@@ -7,7 +7,7 @@ import Movielist from './components/Movies/Movielist';
 import Imprint from './components/subsites/Imprint';
 import Privacy from './components/subsites/Privacy';
 import MovieDetails from './components/Movies/MovieDetails';
-import { Footer } from 'react-materialize';
+import { Footer, Col, ProgressBar } from 'react-materialize';
 import './App.css';
 
 class App extends Component {

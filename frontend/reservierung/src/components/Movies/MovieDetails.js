@@ -37,7 +37,8 @@ class MovieDetails extends Component {
       trailer: '',
       desc: '',
       laufzeit: '',
-      ticketanzahl: 1,
+      ticketanzahl: 0,
+      buttonDisabled: true,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -94,6 +95,10 @@ class MovieDetails extends Component {
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+    if (this.state.name != '') {
+      console.log('alle felder beschrieben');
+      this.setState({ buttonDisabled: false });
+    }
     console.log(this.state);
   }
   //TODO: Mehrere Tickets reservieren lassen
@@ -226,6 +231,7 @@ class MovieDetails extends Component {
               type="submit"
               onSubmit={this.handleSubmit}
               onClick={this.notify}
+              disabled={this.state.buttonDisabled}
             >
               Reservieren
             </button>
@@ -235,7 +241,13 @@ class MovieDetails extends Component {
     } else if (reservierungen < maxReservierungen && reservated) {
       form = <p>Ihre Registrierung wurde erfolgreich gespeichert!</p>;
     } else {
-      form = <p>Unser Reservierungs-Kontingent ist leider aufgebraucht.</p>;
+      form = (
+        <p>
+          Unser Reservierungs-Kontingent ist leider aufgebraucht. Dies bedeutet
+          aber nicht, dass alle Kinoplätze bereits belegt sind. An der
+          Abendkasse halten wir immer ein großzügiges Kontingent für sie zurück
+        </p>
+      );
     }
 
     if (loading) {
