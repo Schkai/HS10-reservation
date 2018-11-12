@@ -32,8 +32,8 @@ class App extends Component {
         <div className="container">
           <nav className="transparent">
             <div className="nav-wrapper transparent">
-              <a href="/" class="brand-logo center">
-                Tickets reservieren
+              <a href="/" className="brand-logo center">
+                Tickets
               </a>
             </div>
           </nav>

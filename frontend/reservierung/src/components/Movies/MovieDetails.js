@@ -21,7 +21,6 @@ import {
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.state = {
       date: '',
       image: '',
@@ -95,22 +94,32 @@ class MovieDetails extends Component {
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+    console.log(this.state);
   }
-
+  //TODO: Mehrere Tickets reservieren lassen
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ reservierungen: this.state.reservierungen + 1 });
-    this.increaseTicketCounter(this.props.id, this.state.reservierungen);
+    this.setState({
+      reservierungen: Number(
+        Number(this.state.reservierungen) + Number(this.state.ticketanzahl)
+      ),
+    });
+    this.increaseTicketCounter(
+      this.props.id,
+      this.state.reservierungen,
+      this.state.ticketanzahl
+    );
     this.addReserveration(
       this.state.reservationName,
       this.state.phone,
-      this.props.id
+      this.props.id,
+      this.state.ticketanzahl
     );
   }
 
-  increaseTicketCounter(id, tickets) {
+  increaseTicketCounter(id, tickets, ticketanzahl) {
     console.log(this.state);
-    console.log(tickets);
+    console.log(tickets + ticketanzahl);
 
     let db = fire.firestore();
     db.settings({ timestampsInSnapshots: true });
@@ -119,7 +128,9 @@ class MovieDetails extends Component {
     ticketCounterRef
       .set(
         {
-          reservierungen: tickets + 1,
+          reservierungen: Number(
+            Number(this.state.reservierungen) + Number(this.state.ticketanzahl)
+          ),
         },
         {
           merge: true,
@@ -134,7 +145,7 @@ class MovieDetails extends Component {
       });
   }
 
-  addReserveration(reservationName, phone, id) {
+  addReserveration(reservationName, phone, id, ticketanzahl) {
     let db = fire.firestore();
     db.settings({ timestampsInSnapshots: true });
 
@@ -146,6 +157,7 @@ class MovieDetails extends Component {
       .add({
         name: reservationName,
         phone: phone,
+        ticketanzahl: ticketanzahl,
       })
       .then(function(docRef) {
         console.log('Document written with ID: ', docRef.id);
@@ -186,13 +198,15 @@ class MovieDetails extends Component {
                 label="Name:"
                 onChange={this.handleChange}
                 type="text"
+                name="reservationName"
               />
               <Input
                 s={6}
                 placeholder="Ihre Telefonnummer:"
                 label="Telefonnummer"
                 onChange={this.handleChange}
-                type="tel"
+                type="number"
+                name="phone"
               />
               <Input
                 placeholder="1"
@@ -202,6 +216,7 @@ class MovieDetails extends Component {
                 type="number"
                 min="1"
                 max="8"
+                name="ticketanzahl"
               />
             </Row>
 
@@ -234,54 +249,56 @@ class MovieDetails extends Component {
     } else {
       return (
         <div className="container">
-          <div class="centering">
-            <Card classname="small" header={<CardTitle image={image} />}>
-              <h4 className="">{name}</h4>
-              <hr />
-              <div className="teaser">
-                <span>{teaser}</span>
-              </div>
-
-              <h6>{date}</h6>
-              <h6>Laufzeit: {laufzeit}</h6>
-              <Modal
-                header="Reservieren"
-                trigger={<Button>Reservieren</Button>}
-                actions={
-                  <Button modal="close" waves="light">
-                    Schließen
-                  </Button>
-                }
-              >
-                {form}
-              </Modal>
-            </Card>
-
-            <Tabs className="tab-demo z-depth-1 tabs-fixed-width">
-              <Tab title="Film" active>
-                <div className="card-panel white">
-                  <p>{desc}</p>
+          <div className="centering">
+            <Col s={12} className="centering">
+              <Card header={<CardTitle image={image} />}>
+                <h4 className="">{name}</h4>
+                <hr />
+                <div className="teaser">
+                  <span>{teaser}</span>
                 </div>
-              </Tab>
-              <Tab title="Regie" className="regie">
-                <div className="card-panel white">
-                  <p>{regie}</p>
-                </div>
-              </Tab>
-              <Tab title="Trailer">
-                <div className="card-panel white ">
-                  <div class="video-container">
-                    <iframe
-                      width="853"
-                      height="480"
-                      src={trailer}
-                      frameborder="0"
-                      allowfullscreen
-                    />
+
+                <h6>{date}</h6>
+                <h6>Laufzeit: {laufzeit}</h6>
+                <Modal
+                  header="Reservieren"
+                  trigger={<Button>Reservieren</Button>}
+                  actions={
+                    <Button modal="close" waves="light">
+                      Schließen
+                    </Button>
+                  }
+                >
+                  {form}
+                </Modal>
+              </Card>
+
+              <Tabs className="tab-demo z-depth-1 tabs-fixed-width">
+                <Tab title="Film" active>
+                  <div className="card-panel white">
+                    <p>{desc}</p>
                   </div>
-                </div>
-              </Tab>
-            </Tabs>
+                </Tab>
+                <Tab title="Regie" className="regie">
+                  <div className="card-panel white">
+                    <p>{regie}</p>
+                  </div>
+                </Tab>
+                <Tab title="Trailer">
+                  <div className="card-panel white ">
+                    <div className="video-container">
+                      <iframe
+                        width="853"
+                        height="480"
+                        src={trailer}
+                        frameborder="0"
+                        allowfullscreen="true"
+                      />
+                    </div>
+                  </div>
+                </Tab>
+              </Tabs>
+            </Col>
           </div>
           <ToastContainer />
         </div>

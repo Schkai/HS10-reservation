@@ -7,3 +7,7 @@
 .card-image {
   max-height: 40% !important;
 }
+
+.card.medium .card-content {
+  overflow: auto;
+}

@@ -11,6 +11,17 @@
 }
 
 .centering {
-  width: 80%;
+  max-width: 533px;
   margin: auto;
+}
+
+.card {
+  max-width: 100%;
+}
+
+.row .col.s12 {
+  width: 100%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
