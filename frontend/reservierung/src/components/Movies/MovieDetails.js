@@ -95,11 +95,8 @@ class MovieDetails extends Component {
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    if (this.state.name != '') {
-      console.log('alle felder beschrieben');
-      this.setState({ buttonDisabled: false });
-    }
     console.log(this.state);
+    }
   }
   //TODO: Mehrere Tickets reservieren lassen
   handleSubmit(event) {
@@ -124,12 +121,12 @@ class MovieDetails extends Component {
 
   increaseTicketCounter(id, tickets, ticketanzahl) {
     console.log(this.state);
-    console.log(tickets + ticketanzahl);
+    console.log(tickets + ' ' + ticketanzahl);
 
     let db = fire.firestore();
     db.settings({ timestampsInSnapshots: true });
 
-    let ticketCounterRef = db.collection('filme').doc(id);
+    let ticketCounterRef = db.collection('test').doc(id);
     ticketCounterRef
       .set(
         {
@@ -219,8 +216,6 @@ class MovieDetails extends Component {
                 label="Anzahl der Tickets (maximal 8):"
                 onChange={this.handleChange}
                 type="number"
-                min="1"
-                max="8"
                 name="ticketanzahl"
               />
             </Row>
@@ -244,8 +239,8 @@ class MovieDetails extends Component {
       form = (
         <p>
           Unser Reservierungs-Kontingent ist leider aufgebraucht. Dies bedeutet
-          aber nicht, dass alle Kinoplätze bereits belegt sind. An der
-          Abendkasse halten wir immer ein großzügiges Kontingent für sie zurück
+          aber nicht, dass das Kino vollständig belegt ist. An der Abendkasse
+          halten wir für sie immer ein kleines Kontingent zurück.
         </p>
       );
     }
