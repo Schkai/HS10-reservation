@@ -37,7 +37,7 @@ class MovieDetails extends Component {
       trailer: '',
       desc: '',
       laufzeit: '',
-      ticketanzahl: 0,
+      ticketanzahl: '',
       buttonDisabled: true,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -93,12 +93,29 @@ class MovieDetails extends Component {
       });
   }
 
+  //FIXME: Need some kind of form validation. !!IMPORTANT!!
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
-    console.log(this.state);
+    /*
+    if (this.state.ticketanzahl.length <= 0) {
+      this.setState(
+        { [event.target.name]: event.target.value, buttonDisabled: false },
+        console.log(this.state.ticketanzahl.length)
+      );
+    } else if (this.state.ticketanzahl.length > 0) {
+      this.setState({
+        [event.target.name]: event.target.value,
+        buttonDisabled: true,
+      });
     }
+    */
+    this.setState(
+      { [event.target.name]: event.target.value, buttonDisabled: false },
+      console.log(this.state.ticketanzahl.length)
+    );
+
+    console.log(this.state.ticketanzahl.length);
   }
-  //TODO: Mehrere Tickets reservieren lassen
+
   handleSubmit(event) {
     event.preventDefault();
     this.setState({
@@ -106,6 +123,11 @@ class MovieDetails extends Component {
         Number(this.state.reservierungen) + Number(this.state.ticketanzahl)
       ),
     });
+    if (this.state.ticketanzahl > 9) {
+      console.log('zu viele tickets');
+    } else {
+      
+    }
     this.increaseTicketCounter(
       this.props.id,
       this.state.reservierungen,
@@ -213,7 +235,7 @@ class MovieDetails extends Component {
               <Input
                 placeholder="1"
                 s={6}
-                label="Anzahl der Tickets (maximal 8):"
+                label="Anzahl der Tickets (maximal 9):"
                 onChange={this.handleChange}
                 type="number"
                 name="ticketanzahl"
