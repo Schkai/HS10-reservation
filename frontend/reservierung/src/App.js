@@ -16,16 +16,6 @@ class App extends Component {
     this.state = { movies: [] }; // setup state
   }
 
-  addMessage(e) {
-    e.preventDefault(); // <- prevent form submit from reloading the page
-    /* Send the message to Firebase */
-    fire
-      .database()
-      .ref('messages')
-      .push(this.inputEl.value);
-    this.inputEl.value = ''; // <- clear the input
-  }
-
   render() {
     return (
       <div className="App">
