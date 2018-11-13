@@ -1,0 +1,20 @@
+.center-cols > .col {
+  float: none; /* disable the float */
+  display: inline-block; /* make blocks inline-block */
+  text-align: initial; /* restore text-align to default */
+}
+
+.card-image {
+  max-height: 40% !important;
+}
+
+.card.medium .card-content {
+  overflow: auto;
+}
+.card-title {
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
