@@ -336,7 +336,6 @@ class MovieDetails extends Component {
                 <div className="teaser">
                   <span>{teaser}</span>
                 </div>
-
                 <h6>{date}</h6>
 
                 <h2>
