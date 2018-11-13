@@ -42,22 +42,42 @@ class MovieDetails extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.notify = this.notify.bind(this);
+    this.notifyToast = this.notifyToast.bind(this);
   }
 
-  notify = () =>
-    toast.success(
-      'Vielen Dank, Ihr Ticket wurde reserviert. Sie werden zurück auf die Startseite weitergeleitet.',
-      {
-        position: 'bottom-left',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        onClose: () => navigate('/'),
-      }
-    );
+  notifyToast = string => {
+    switch (string) {
+      case 'success':
+        toast.success(
+          'Vielen Dank, Ihr Ticket wurde reserviert. Sie werden zurück auf die Startseite weitergeleitet.',
+          {
+            position: 'bottom-left',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            onClose: () => navigate('/'),
+          }
+        );
+        break;
+      case 'error':
+        console.log('error');
+        toast.error(
+          'Bei der Registrierung ist ein Fehler aufgetreten. Bitte versuchen sie es erneut.',
+          {
+            position: 'bottom-left',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          }
+        );
+    }
+  };
+  /*
+   */
 
   componentWillMount() {
     let db = fire.firestore();
@@ -108,37 +128,36 @@ class MovieDetails extends Component {
       });
     }
     */
-    this.setState(
-      { [event.target.name]: event.target.value, buttonDisabled: false },
-      console.log(this.state.ticketanzahl.length)
-    );
-
-    console.log(this.state.ticketanzahl.length);
+    this.setState({
+      [event.target.name]: event.target.value,
+      buttonDisabled: false,
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log(Number(this.state.ticketanzahl));
     this.setState({
       reservierungen: Number(
         Number(this.state.reservierungen) + Number(this.state.ticketanzahl)
       ),
     });
-    if (this.state.ticketanzahl > 9) {
-      console.log('zu viele tickets');
+    if (Number(this.state.ticketanzahl) > 9) {
+      this.notifyToast('error');
     } else {
-      
+      this.increaseTicketCounter(
+        this.props.id,
+        this.state.reservierungen,
+        this.state.ticketanzahl
+      );
+      this.addReserveration(
+        this.state.reservationName,
+        this.state.phone,
+        this.props.id,
+        this.state.ticketanzahl
+      );
+      this.notifyToast('success');
     }
-    this.increaseTicketCounter(
-      this.props.id,
-      this.state.reservierungen,
-      this.state.ticketanzahl
-    );
-    this.addReserveration(
-      this.state.reservationName,
-      this.state.phone,
-      this.props.id,
-      this.state.ticketanzahl
-    );
   }
 
   increaseTicketCounter(id, tickets, ticketanzahl) {
@@ -247,7 +266,6 @@ class MovieDetails extends Component {
               className="btn waves-effect waves-light"
               type="submit"
               onSubmit={this.handleSubmit}
-              onClick={this.notify}
               disabled={this.state.buttonDisabled}
             >
               Reservieren

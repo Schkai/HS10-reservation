@@ -31,6 +31,10 @@ code {
   background-color: transparent !important;
 }
 
+p {
+  text-align: justify;
+}
+
 /*
   background: #de6262; /* fallback for old browsers */
 /* background: -webkit-linear-gradient(
