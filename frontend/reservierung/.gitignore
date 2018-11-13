@@ -32,6 +32,10 @@ src/fire.js
 **/node_modules/*
 **/.firebaserc
 
+
+# branches
+./**/dashboard/.firebase.json
+
 ### Firebase Patch ###
 .runtimeconfig.json
 .firebase/

@@ -137,26 +137,29 @@ class MovieDetails extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log(Number(this.state.ticketanzahl));
-    this.setState({
-      reservierungen: Number(
-        Number(this.state.reservierungen) + Number(this.state.ticketanzahl)
-      ),
-    });
+
     if (Number(this.state.ticketanzahl) > 9) {
       this.notifyToast('error');
     } else {
-      this.increaseTicketCounter(
-        this.props.id,
-        this.state.reservierungen,
-        this.state.ticketanzahl
+      this.setState(
+        {
+          reservierungen: Number(
+            Number(this.state.reservierungen) + Number(this.state.ticketanzahl)
+          ),
+        },
+        this.increaseTicketCounter(
+          this.props.id,
+          this.state.reservierungen,
+          this.state.ticketanzahl
+        ),
+        this.addReserveration(
+          this.state.reservationName,
+          this.state.phone,
+          this.props.id,
+          this.state.ticketanzahl
+        ),
+        this.notifyToast('success')
       );
-      this.addReserveration(
-        this.state.reservationName,
-        this.state.phone,
-        this.props.id,
-        this.state.ticketanzahl
-      );
-      this.notifyToast('success');
     }
   }
 
@@ -167,7 +170,7 @@ class MovieDetails extends Component {
     let db = fire.firestore();
     db.settings({ timestampsInSnapshots: true });
 
-    let ticketCounterRef = db.collection('test').doc(id);
+    let ticketCounterRef = db.collection('filme').doc(id);
     ticketCounterRef
       .set(
         {
