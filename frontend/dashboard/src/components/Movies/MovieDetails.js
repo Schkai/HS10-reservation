@@ -48,6 +48,7 @@ class MovieDetails extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.notifyToast = this.notifyToast.bind(this);
     this.updateTable = this.updateTable.bind(this);
+    this.print = this.print.bind(this);
   }
 
   notifyToast = string => {
@@ -122,16 +123,6 @@ class MovieDetails extends Component {
       .doc(this.props.id)
       .collection('reservierungen');
 
-    /*tableRef.get().then(function(querySnapshot) {
-      querySnapshot.forEach(
-        function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, ' => ', doc.data());
-          this.setState({ table: '23' });
-        }.bind(this)
-      );
-    });*/
-
     tableRef.get().then(snap => {
       const items = [];
       snap.forEach(item => {
@@ -140,6 +131,10 @@ class MovieDetails extends Component {
       this.setState({ table: items });
       console.log(items);
     });
+  }
+
+  print() {
+    window.print();
   }
 
   updateTable(tableData) {
@@ -312,11 +307,13 @@ class MovieDetails extends Component {
       form = <p>Ihre Registrierung wurde erfolgreich gespeichert!</p>;
     } else {
       form = (
-        <p>
-          Unser Reservierungs-Kontingent ist leider aufgebraucht. Dies bedeutet
-          aber nicht, dass das Kino vollständig belegt ist. An der Abendkasse
-          halten wir für sie immer ein kleines Kontingent zurück.
-        </p>
+        <div>
+          <p>
+            Unser Reservierungs-Kontingent ist leider aufgebraucht. Dies
+            bedeutet aber nicht, dass das Kino vollständig belegt ist. An der
+            Abendkasse halten wir für sie immer ein kleines Kontingent zurück.
+          </p>
+        </div>
       );
     }
 
@@ -333,7 +330,7 @@ class MovieDetails extends Component {
         <div className="container">
           <div className="centering">
             <Col s={12} className="centering">
-              <Card header={<CardTitle image={image} />}>
+              <Card>
                 <h4 className="">{name}</h4>
                 <hr />
                 <div className="teaser">
@@ -341,10 +338,11 @@ class MovieDetails extends Component {
                 </div>
 
                 <h6>{date}</h6>
-                <h6>Laufzeit: {laufzeit}</h6>
+
                 <h2>
                   {reservierungen}&nbsp;/{maxReservierungen}
                 </h2>
+
                 <Modal
                   header="Reservieren"
                   trigger={<Button>Reservieren</Button>}
@@ -356,6 +354,8 @@ class MovieDetails extends Component {
                 >
                   {form}
                 </Modal>
+                <br />
+                <Button onClick={this.print}>Drucken</Button>
               </Card>
               <ReactTable
                 classname="ref-table"

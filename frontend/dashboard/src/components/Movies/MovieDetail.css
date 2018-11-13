@@ -13,6 +13,8 @@
 .centering {
   max-width: 533px;
   margin: auto;
+  background-color: white !important;
+  color: black !important;
 }
 
 .card {
