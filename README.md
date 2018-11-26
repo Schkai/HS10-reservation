@@ -1,6 +1,6 @@
 # HEIMSPIEL 10 Reservierung
 
-An application to reserve tickets for the HEIMSPIEL 10 Filmfestival. Also my first application using React. This projekt was implemented in a very short timespan and used Firebase for backend functionality.
+An application to reserve tickets for the HEIMSPIEL 10 Filmfestival. Also my first application using React. This project was implemented in a very short timespan and used Firebase for backend functionality.
 
 ## Screenshot: 
 
