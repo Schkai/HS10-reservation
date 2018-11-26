@@ -1,3 +1,6 @@
+
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Schkai/HS10-reservation/)
+
 # HEIMSPIEL 10 Reservierung
 
 An application to reserve tickets for the HEIMSPIEL 10 Filmfestival. Also my first application using React. This project was implemented in a very short timespan and used Firebase for backend functionality.
