@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# HEIMSPIEL 10 Reservierung
+
+An application to reserve tickets for the HEIMSPIEL 10 Filmfestival. Also my first application using React. This project was implemented in a very short timespan and used Firebase for backend functionality.
+
+## Screenshot: 
+
+
 
 ## Available Scripts
 
@@ -37,8 +43,6 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
