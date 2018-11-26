@@ -4,6 +4,7 @@ An application to reserve tickets for the HEIMSPIEL 10 Filmfestival. Also my fir
 
 ## Screenshot: 
 
+![Screenshot](HS10-Ticket-Screenshot.png)
 
 
 ## Available Scripts
