@@ -18,7 +18,7 @@ class Movie extends Component {
         <div className="col m4">
           <div className="card medium hoverable">
             <div className="card-image">
-              <img src={this.props.image} />
+              <img src={this.props.image} alt="movieimage"/>
               <span className="card-title center-align">
                 {this.props.title}
               </span>

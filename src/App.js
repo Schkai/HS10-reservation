@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import fire from './fire';
-import { Router, Link } from '@reach/router';
-import User from './User';
-import Landing from './components/landingpage/Landing';
+import { Router } from '@reach/router';
 import Movielist from './components/Movies/Movielist';
 import Imprint from './components/subsites/Imprint';
 import Privacy from './components/subsites/Privacy';
 import MovieDetails from './components/Movies/MovieDetails';
-import { Footer, Col, ProgressBar } from 'react-materialize';
+import { Footer } from 'react-materialize';
 import './App.css';
 
 class App extends Component {

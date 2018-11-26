@@ -40,7 +40,6 @@ class Movielist extends Component {
   }
 
   render() {
-    const { loading } = this.state;
     return (
       <div className="movielist container">
         <div className="row">

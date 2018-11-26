@@ -10,7 +10,6 @@ import {
   Col,
   Card,
   CardTitle,
-  Preloader,
   ProgressBar,
   Input,
   Row,
