@@ -49,5 +49,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## License
 
-The code in this project is released under the MIT license.
-
+The code in this project is released under the [MIT license](LICENSE).
