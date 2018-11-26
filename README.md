@@ -47,3 +47,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## License
+
+The code in this project is released under the MIT license.
+
